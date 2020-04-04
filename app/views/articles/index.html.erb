@@ -5,7 +5,7 @@
         <tr>
             <th>Tytuł</th>
             <th>Opis</th>
-            <th>Akcje</th>
+            <th colspan="3">Akcje</th>
         </tr>
     </thead>
 
@@ -15,8 +15,14 @@
             <tr>
                 <td><%= article.tytuł %></td>
                 <td><%= article.opis %></td>
-                <td>Coś holder</td>
+                <td><%= link_to 'Pokaż', article_path(article) %> </td>
+                <td><%= link_to 'Edytuj', edit_article_path(article) %> </td>
+                <td><%= link_to 'Usuń', article_path(article), method: :delete, data: { confirm: "Jesteś pewien?" } %></td>
             </tr>
         <% end %>
     </tbody>
 </table>
+
+<p>
+<%= link_to 'Stwórz nowy artykuł', new_article_path %>
+</p>

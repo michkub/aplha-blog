@@ -1,4 +1,9 @@
 <h1>pokaż szczegóły artykułu</h1>
+
 <p><strong>Tytuł: </strong><%= @article.tytuł %></p>
 <p><strong>Opis: </strong><%= @article.opis %></p>
+
+<%= link_to 'Edytuj', edit_article_path(@article) %> |
+<%= link_to 'Usuń', article_path(@article), method: :delete, data: { confirm: "Jesteś pewien?" } %> |
+<%= link_to 'Wróć do listy', articles_path %>
 
