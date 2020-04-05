@@ -1,9 +1,22 @@
-<h1>pokaż szczegóły artykułu</h1>
+<h2 class= "text-center mt-4"><%= @article.tytuł%> </h2>
 
-<p><strong>Tytuł: </strong><%= @article.tytuł %></p>
-<p><strong>Opis: </strong><%= @article.opis %></p>
-
-<%= link_to 'Edytuj', edit_article_path(@article) %> |
-<%= link_to 'Usuń', article_path(@article), method: :delete, data: { confirm: "Jesteś pewien?" } %> |
-<%= link_to 'Wróć do listy', articles_path %>
-
+<div class="container">
+    <div class="row justify-content-md-center">
+        <div class="col-8 mt-4">
+            <div class="card text-center shadow mb-5 bg-white rounded">
+                <div class="card-header font-italic">
+                    by Michał Kubiak
+                </div>
+                <div class="card-body">
+                    <div class="card-text text-left"><%= simple_format(@article.opis) %></div>
+                    <%= link_to "Edytuj", edit_article_path(@article), class: "btn btn-outline-warning" %>
+                    <%= link_to "Usuń", article_path(@article), class: "btn btn-outline-danger", method: :delete, data: {confirm: "Jesteś pewien?"} %>
+                </div>
+                <div class="card-footer text-muted">
+                    <small> Utworzone <%= time_ago_in_words(@article.created_at) %>,
+                    edytowane <%= time_ago_in_words(@article.updated_at) %></small>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
