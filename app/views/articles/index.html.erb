@@ -1,5 +1,6 @@
-
 <h1 class= "text-center mt-4">Wszystkie artykuły</h1>
 
-<%= render 'article' %>
+<%= render 'article'%>
+
+<%= will_paginate(@rticles, :renderer => WillPaginate::ActionView::Bootstrap4LinkRenderer, class: 'pagination justify-content-md-center') %>
 

@@ -25,3 +25,4 @@
     <% end %>
 </div>
 
+<%= will_paginate(@users, :renderer => WillPaginate::ActionView::Bootstrap4LinkRenderer, class: 'pagination justify-content-md-center') %>
