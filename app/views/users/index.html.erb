@@ -18,8 +18,14 @@
                         </h5>
                         <p class="card-text">Ilość artykułów: <%= user.articles.count %></p>
                         <%= link_to "Zobacz profil", user, class: "btn btn-outline-success" %>
-                        <% if logged_in? && user ==  current_user %>
-                            <%= link_to "Edytuj profil", edit_user_path(user), class: "btn btn-outline-warning" %>
+                        <% if logged_in? %>
+                            <% if user ==  current_user %>
+                                <%= link_to "Edytuj profil", edit_user_path(user), class: "btn btn-outline-warning" %>
+                            <% end %>
+                            <% if current_user.admin? %>
+                                <%= link_to "Usuń profil", user_path(user), class: "btn btn-outline-danger", method: :delete,
+                                data: {confirm: "Jesteś pewien, że chcesz usunąć tego użytkownika i wszystkie jego artykuły?"} %>
+                            <% end %>
                         <% end %>
                     </div>
                     <div class="card-footer text-muted">

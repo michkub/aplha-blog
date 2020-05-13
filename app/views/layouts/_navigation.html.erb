@@ -26,11 +26,12 @@
         <% if logged_in? %>
             <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    Profil [<%= current_user.username %>]
+                    <%= "(Admin)" if current_user.admin? %> Profil [<%= current_user.username %>]
                 </a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                     <%= link_to "Twój profil", user_path(current_user), class: "dropdown-item" %>
                     <%= link_to "Edytuj profil", edit_user_path(current_user), class: "dropdown-item" %>
+                    <%= link_to "Usuń profil", user_path(current_user), class: "dropdown-item text-danger", method: :delete, data: { confirm: "Jesteś pewien?"} %>
             </li>
             <li class="nav-item">
                 <%= link_to "Wyloguj się", logout_path, class: "nav-link", method: :delete %>
